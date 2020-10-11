@@ -1,0 +1,38 @@
+public class Lab1 {
+   public static void main(String[] args) {
+       short[] d = { 16, 15,14,13,12,11,10,9,8,7,6}; /* создаем два одномерных 
+       массива */
+       float[] x;
+       x = new float[16];
+       for (int i = 0; i<16; i++) {
+           x[i] = (float)(-9.0 + Math.random()*20); /* приводим получаемый рандомные 
+           числа к типу float, нужному по заданию, так как изначально random отдает 
+           числа типа double */
+       }
+       double[][] d1;
+       d1 = new double[11][16]; /* новый двумерный массив  */
+       for (int i = 0; i<11; i++) { /* идем по строкам */
+           for (int j = 0; j<16; j++) { /* идем по столбцам */
+             if (d[i]==14) {
+                 double step = (double)((2/3+x[j])/0.5); /* создаем отдельную переменную
+                 для степени х, чтобы облегчить дальнейшую запись вычислений */
+                 d1[i][j] = Math.cbrt(Math.tan(Math.pow(x[j],step)));
+                }
+             else if (d[i] == 8 || d[i] == 9 || d[i] == 11 || d[i] == 12 || d[i] == 16 ) {
+                 d1[i][j] = Math.cbrt(Math.pow((x[j]/4),2)); } 
+                 else {
+                 double step1 = (double)(Math.atan(Math.cos(Math.cos(Math.exp(x[j])))));
+                 /* создаем еще одну переменную для другой степени */
+                 d1[i][j] = Math.log(Math.exp(step1));
+                  }
+             System.out.printf("%.2f ",d1[i][j]); /* печатаем строку в формате 
+             с двумя знаками после запятой */
+           } 
+           System.out.println(); /* перееносим каждую следующую строку массива 
+           на новую строку */
+       } 
+       
+   }
+   
+}
+
